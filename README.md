@@ -32,7 +32,7 @@ ___
 How to contribute to the project
 
 1. Clone repo into local machine
-    * **git clone http://github.com/Mosquito-Mashers/Decisionator.git**
+    * **git clone http://github.com/WorkoutGenerator/Work_It.git**
 2. Build and run (master branch should be clean)
 3. checkout new branch
     *  **git checkout -b {branch-name}**
