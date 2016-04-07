@@ -53,9 +53,11 @@ public class LogInActivity extends AppCompatActivity {
                 Logins.put("graph.facebook.com", AccessToken.getCurrentAccessToken().getToken());
                 credentialsProvider.setSessionDuration(86400);
                 credentialsProvider.setLogins(Logins);
-
+                Intent intent = new Intent(LogInActivity.this, WorkItSelector.class);
+                startActivity(intent);
                 Toast toast = Toast.makeText(getApplicationContext(), Profile.getCurrentProfile().getFirstName(), Toast.LENGTH_LONG);
                 toast.show();
+
             }
 
             @Override
