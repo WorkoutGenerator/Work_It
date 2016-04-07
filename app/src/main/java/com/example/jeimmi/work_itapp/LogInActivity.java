@@ -43,6 +43,7 @@ public class LogInActivity extends AppCompatActivity {
         CreateFBCallback();
 
     }
+
     private void CreateFBCallback(){
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
 
@@ -66,7 +67,6 @@ public class LogInActivity extends AppCompatActivity {
             public void onError(FacebookException error) {
                 TextView txt = (TextView) findViewById(R.id.info);
                 txt.setText(error.toString());
-
             }
         });
     }
@@ -75,6 +75,4 @@ public class LogInActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
-
-
 }
