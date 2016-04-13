@@ -18,8 +18,7 @@ public class WorkItSelector extends AppCompatActivity {
         gridview.setAdapter(new ImageAdapter(this));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v,
-                                    int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 Toast.makeText(WorkItSelector.this, "" + position,
                         Toast.LENGTH_SHORT).show();
             }

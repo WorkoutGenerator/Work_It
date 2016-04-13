@@ -4,4 +4,8 @@
     <string name="title_activity_log_in">LogInActivity</string>
     <string name="facebook_app_id">665525933590000</string>
     <string name="title_activity_work_it_selector">WorkItSelector</string>
+    <string name="arms">Arms</string>
+    <string name="legs">Legs</string>
+    <string name="abs">Abs</string>
+    <string name="back">Back</string>
 </resources>

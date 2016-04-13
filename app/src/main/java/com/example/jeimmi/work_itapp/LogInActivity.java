@@ -3,6 +3,7 @@ package com.example.jeimmi.work_itapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +15,8 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.Profile;
+import com.facebook.ProfileTracker;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
@@ -23,6 +26,8 @@ import java.util.Map;
 public class LogInActivity extends AppCompatActivity {
     private LoginButton loginButton;
     private CallbackManager callbackManager;
+    private Profile Uprofile;
+    private ProfileTracker mProfileTracker;
 
     private CognitoCachingCredentialsProvider credentialsProvider;
     @Override
@@ -30,7 +35,28 @@ public class LogInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_log_in);
+        LoginManager.getInstance().logOut();
 
+        if(Profile.getCurrentProfile() == null) {
+            mProfileTracker = new ProfileTracker() {
+                @Override
+                protected void onCurrentProfileChanged(Profile profile, Profile profile2) {
+                    // profile2 is the new profile
+                    Uprofile = profile2;
+                    Log.v("facebook - profile", profile2.getFirstName());
+                    mProfileTracker.stopTracking();
+                    Toast toast = Toast.makeText(getApplicationContext(), Uprofile.getFirstName(), Toast.LENGTH_LONG);
+                    toast.show();
+                    Intent intent = new Intent(LogInActivity.this, WorkItSelector.class);
+                    startActivity(intent);
+                }
+            };
+            mProfileTracker.startTracking();
+        }
+        else {
+            Profile profile = Profile.getCurrentProfile();
+            Log.v("facebook - profile", profile.getFirstName());
+        }
 
         callbackManager = CallbackManager.Factory.create();
         loginButton =(LoginButton)findViewById(R.id.login_button);
@@ -49,10 +75,10 @@ public class LogInActivity extends AppCompatActivity {
                 Logins.put("graph.facebook.com", AccessToken.getCurrentAccessToken().getToken());
                 credentialsProvider.setSessionDuration(86400);
                 credentialsProvider.setLogins(Logins);
-                //Toast toast = Toast.makeText(getApplicationContext(), Profile.getCurrentProfile().getFirstName(), Toast.LENGTH_LONG);
-                // toast.show();
-                Intent intent = new Intent(LogInActivity.this, WorkItSelector.class);
-                startActivity(intent);
+
+
+
+
 
             }
 
@@ -73,8 +99,6 @@ public class LogInActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
 
-/*            Intent intent = new Intent(LogInActivity.this, WorkItSelector.class);
-            startActivity(intent);*/
 
 
     }
