@@ -1,5 +1,6 @@
 package com.example.jeimmi.work_itapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,6 +18,8 @@ import java.util.List;
  * Created by heroshjozavi on 4/6/16.
  */
 public class UserInfo extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    private String userID;
+    private Intent incomingIntent;
 
     // Spinner1 & 2 Drop down elements
     private List<String> bodyTypes = new ArrayList<String>(){{
@@ -44,6 +47,8 @@ public class UserInfo extends AppCompatActivity implements AdapterView.OnItemSel
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
 
+        incomingIntent = getIntent();
+        userID = incomingIntent.getStringExtra(LogInActivity.FB_ID);
         //Seek bar elements;
         seekB = (SeekBar) findViewById(R.id.seekBar);
         seekB2 = (SeekBar) findViewById(R.id.seekBar2);

@@ -33,6 +33,8 @@ public class LogInActivity extends AppCompatActivity {
     private ProfileTracker mProfileTracker;
     private Users currentUser = new Users();
 
+    protected final static String FB_ID ="com.example.jeimmi.work_itapp.FB_ID";
+
     private CognitoCachingCredentialsProvider credentialsProvider;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +54,7 @@ public class LogInActivity extends AppCompatActivity {
                     Toast toast = Toast.makeText(getApplicationContext(), Uprofile.getFirstName(), Toast.LENGTH_LONG);
                     toast.show();
                     setUserInfo();
-                    Intent intent = new Intent(LogInActivity.this, WorkItSelector.class);
-                    startActivity(intent);
+
                 }
             };
             mProfileTracker.startTracking();
@@ -125,12 +126,20 @@ public class LogInActivity extends AppCompatActivity {
             if(temp!=null){
                 temp.setFirstName(userses[0].getFirstName());
                 temp.setLastName(userses[0].getLastName());
+                mapper.save(temp);
+
+                Intent workOutTypeIntent = new Intent(LogInActivity.this, UserInfo.class);
+                workOutTypeIntent.putExtra(FB_ID,currentUser.getUserID());
+                startActivity(workOutTypeIntent);
 
             }else{
-                temp = userses[0];
+                Intent accountCreateIntent = new Intent(LogInActivity.this, UserInfo.class);
+                accountCreateIntent.putExtra(FB_ID,currentUser.getUserID());
+                startActivity(accountCreateIntent);
+
             }
 
-            mapper.save(temp);
+
             return null;
         }
     }
