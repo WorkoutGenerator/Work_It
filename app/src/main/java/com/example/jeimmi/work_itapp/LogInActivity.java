@@ -31,6 +31,7 @@ public class LogInActivity extends AppCompatActivity {
     private CallbackManager callbackManager;
     private Profile Uprofile;
     private ProfileTracker mProfileTracker;
+    private Users currentUser = new Users();
 
     private CognitoCachingCredentialsProvider credentialsProvider;
     @Override
@@ -50,6 +51,7 @@ public class LogInActivity extends AppCompatActivity {
                     mProfileTracker.stopTracking();
                     Toast toast = Toast.makeText(getApplicationContext(), Uprofile.getFirstName(), Toast.LENGTH_LONG);
                     toast.show();
+                    setUserInfo();
                     Intent intent = new Intent(LogInActivity.this, WorkItSelector.class);
                     startActivity(intent);
                 }
@@ -64,11 +66,16 @@ public class LogInActivity extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create();
         loginButton =(LoginButton)findViewById(R.id.login_button);
         credentialsProvider = new CognitoCachingCredentialsProvider(
-                this,"us-east-1:a0ab945b-047c-48fb-8c33-9096e0efaeea ", Regions.US_EAST_1);
+                this,"us-east-1:a0ab945b-047c-48fb-8c33-9096e0efaeea", Regions.US_EAST_1);
         CreateFBCallback();
 
     }
-
+    public void setUserInfo(){
+        currentUser.setUserID(Uprofile.getId());
+        currentUser.setFirstName(Uprofile.getFirstName());
+        currentUser.setLastName(Uprofile.getLastName());
+        new AddUserToDb().execute(currentUser);
+    }
     private void CreateFBCallback(){
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
 
@@ -112,7 +119,18 @@ public class LogInActivity extends AppCompatActivity {
         protected Void doInBackground(Users... userses) {
             AmazonDynamoDBClient ddbClient = new AmazonDynamoDBClient(credentialsProvider);
             DynamoDBMapper mapper = new DynamoDBMapper(ddbClient);
-            mapper.save(userses[0]);
+
+
+            Users temp = mapper.load(Users.class,userses[0].getUserID());
+            if(temp!=null){
+                temp.setFirstName(userses[0].getFirstName());
+                temp.setLastName(userses[0].getLastName());
+
+            }else{
+                temp = userses[0];
+            }
+
+            mapper.save(temp);
             return null;
         }
     }

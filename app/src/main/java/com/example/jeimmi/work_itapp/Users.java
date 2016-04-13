@@ -1,5 +1,6 @@
 package com.example.jeimmi.work_itapp;
 
+import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBAttribute;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBHashKey;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBTable;
 
@@ -12,6 +13,8 @@ public class Users {
     private String UserID;
     private String FirstName;
     private String LastName;
+    private  double Weight;
+    private String Height;
 
 
     @DynamoDBHashKey(attributeName = "UserID")
@@ -23,7 +26,7 @@ public class Users {
     public void setUserID(String userID) {
         UserID = userID;
     }
-    @DynamoDBHashKey(attributeName = "FirstName")
+    @DynamoDBAttribute(attributeName = "FirstName")
     public String getFirstName() {
         return FirstName;
     }
@@ -31,7 +34,7 @@ public class Users {
     public void setFirstName(String firstName) {
         FirstName = firstName;
     }
-    @DynamoDBHashKey(attributeName = "LastName")
+    @DynamoDBAttribute(attributeName = "LastName")
     public String getLastName() {
         return LastName;
     }
@@ -40,6 +43,23 @@ public class Users {
         LastName = lastName;
     }
 
+    @DynamoDBAttribute(attributeName = "Weight")
+    public double getWeight() {
+        return Weight;
+    }
+
+    public void setWeight(double weight) {
+        Weight = weight;
+    }
+
+    @DynamoDBAttribute(attributeName = "Height")
+    public String getHeight() {
+        return Height;
+    }
+
+    public void setHeight(String height) {
+        Height = height;
+    }
 
 
 
