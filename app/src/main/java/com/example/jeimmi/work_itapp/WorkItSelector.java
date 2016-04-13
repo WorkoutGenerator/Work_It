@@ -17,6 +17,8 @@ public class WorkItSelector extends AppCompatActivity {
         setContentView(R.layout.activity_work_it_selector);
         incomingIntent = getIntent();
         userID = incomingIntent.getStringExtra(LogInActivity.FB_ID);
+        Toast toast = Toast.makeText(getApplicationContext(), userID, Toast.LENGTH_LONG);
+        toast.show();
         GridView gridview = (GridView) findViewById(R.id.gridview);
         gridview.setAdapter(new ImageAdapter(this));
 

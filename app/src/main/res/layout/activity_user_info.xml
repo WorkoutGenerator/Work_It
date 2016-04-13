@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Username"
-            android:id="@+id/textView2"
+            android:id="@+id/textBox2"
             android:layout_weight="0.05"
             android:textSize="40px"
             android:layout_below="@+id/textView"
@@ -37,13 +37,13 @@
             android:layout_height="wrap_content"
             android:id="@+id/editText"
             android:layout_below="@+id/textView"
-            android:layout_toRightOf="@+id/textView2" />
+            android:layout_toRightOf="@+id/textBox2" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Current Weight"
-            android:id="@+id/textView3"
+            android:id="@+id/textBox3"
             android:textSize="40px"
             android:paddingLeft="10px"
             android:layout_marginTop="46dp"
@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="60px"
             android:id="@+id/seekBar"
-            android:layout_below="@+id/textView3"
+            android:layout_below="@+id/textBox3"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_toLeftOf="@+id/seekBarView"
@@ -70,7 +70,7 @@
             android:phoneNumber="true"
             android:hint="lbs"
             android:textSize="40px"
-            android:layout_below="@+id/textView3"
+            android:layout_below="@+id/textBox3"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:paddingLeft="20px"
@@ -139,7 +139,7 @@
             android:id="@+id/textView8"
             android:textSize="40px"
             android:paddingLeft="10px"
-            android:layout_below="@+id/textView2"
+            android:layout_below="@+id/textBox2"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="27dp" />
@@ -147,11 +147,11 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText2"
-            android:layout_above="@+id/textView3"
+            android:id="@+id/HeightFtTextBox"
+            android:layout_above="@+id/textBox3"
             android:layout_toRightOf="@+id/textView8"
-            android:layout_alignRight="@+id/textView3"
-            android:layout_alignEnd="@+id/textView3"
+            android:layout_alignRight="@+id/textBox3"
+            android:layout_alignEnd="@+id/textBox3"
             android:numeric="integer" />
 
         <TextView
@@ -159,16 +159,16 @@
             android:layout_height="wrap_content"
             android:text="ft"
             android:id="@+id/textView9"
-            android:layout_alignBottom="@+id/editText2"
-            android:layout_toRightOf="@+id/editText2"
-            android:layout_toEndOf="@+id/editText2"
+            android:layout_alignBottom="@+id/HeightFtTextBox"
+            android:layout_toRightOf="@+id/HeightFtTextBox"
+            android:layout_toEndOf="@+id/HeightFtTextBox"
             android:textSize="40px" />
 
         <EditText
             android:layout_width="150px"
             android:layout_height="wrap_content"
-            android:id="@+id/editText3"
-            android:layout_above="@+id/textView3"
+            android:id="@+id/HeightInTextBox"
+            android:layout_above="@+id/textBox3"
             android:layout_toRightOf="@+id/textView9"
             android:numeric="integer" />
 
@@ -178,9 +178,9 @@
             android:text="in"
             android:id="@+id/textView10"
             android:textSize="40px"
-            android:layout_above="@+id/textView3"
-            android:layout_toRightOf="@+id/editText3"
-            android:layout_toEndOf="@+id/editText3" />
+            android:layout_above="@+id/textBox3"
+            android:layout_toRightOf="@+id/HeightInTextBox"
+            android:layout_toEndOf="@+id/HeightInTextBox" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -205,7 +205,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Confirm Changes"
-            android:id="@+id/button"
+            android:id="@+id/confirmInfoButton"
             android:layout_below="@+id/spinner2"
             android:layout_alignRight="@+id/seekBarView2"
             android:layout_alignEnd="@+id/seekBarView2"
