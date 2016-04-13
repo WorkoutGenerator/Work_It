@@ -1,6 +1,7 @@
 package com.example.jeimmi.work_itapp;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -8,7 +9,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
+import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
 import com.amazonaws.regions.Regions;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -102,4 +105,16 @@ public class LogInActivity extends AppCompatActivity {
 
 
     }
+
+    class AddUserToDb extends AsyncTask<Users,Void,Void>{
+
+        @Override
+        protected Void doInBackground(Users... userses) {
+            AmazonDynamoDBClient ddbClient = new AmazonDynamoDBClient(credentialsProvider);
+            DynamoDBMapper mapper = new DynamoDBMapper(ddbClient);
+            mapper.save(userses[0]);
+            return null;
+        }
+    }
+
 }
