@@ -106,6 +106,10 @@ public class UserInfo extends AppCompatActivity implements AdapterView.OnItemSel
                 currentUser.setWeight(weight);
                 new upDateUserInfo().execute(currentUser);
                 Toast.makeText(getApplicationContext(), "Updating Info", Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(UserInfo.this, WorkItSelector.class);
+
+                startActivity(intent);
             }
         });
 
