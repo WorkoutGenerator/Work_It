@@ -11,10 +11,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class WorkItSelector extends AppCompatActivity {
+    protected final static String WORKOUT_TYPE="com.example.jeimmi.work_itapp.WORKOUT_TYPE";
     private String userID;
     private Intent incomingIntent;
-
-    String[] TypeOfWorkOuts;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,32 +28,28 @@ public class WorkItSelector extends AppCompatActivity {
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                Toast.makeText(WorkItSelector.this, "" + position,
-                        Toast.LENGTH_SHORT).show();
+                Intent workOutList = new Intent(WorkItSelector.this, ListViewWorkOut.class);
                 switch (position){
                     case 0:
-                        TypeOfWorkOuts[0]="Arms";
+                        workOutList.putExtra(WORKOUT_TYPE, "ABS");
+
                         break;
                     case 1:
-                        TypeOfWorkOuts[1]="Abs";
+                        workOutList.putExtra(WORKOUT_TYPE,"ARMS");
                         break;
                     case 2:
-                        TypeOfWorkOuts[2]="Back";
+                        workOutList.putExtra(WORKOUT_TYPE,"BACK");
                         break;
                     case 3:
-                        TypeOfWorkOuts[3]="Legs";
+                        workOutList.putExtra(WORKOUT_TYPE,"LEGS");
                         break;
                 }
+                startActivity(workOutList);
 
             }
         });
 
 
-        final Button button = (Button) findViewById(R.id.GenWorkOut);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-            }
-        });
+
     }
 }

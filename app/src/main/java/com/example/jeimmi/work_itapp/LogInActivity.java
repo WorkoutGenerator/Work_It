@@ -48,7 +48,7 @@ public class LogInActivity extends AppCompatActivity {
 
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
-                    "com.hitup.hitup",
+                    "com.example.jeimmi.work_itapp",
                     PackageManager.GET_SIGNATURES);
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");

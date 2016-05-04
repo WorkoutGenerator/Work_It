@@ -4,8 +4,27 @@
     <string name="title_activity_log_in">LogInActivity</string>
     <string name="facebook_app_id">665525933590000</string>
     <string name="title_activity_work_it_selector">WorkItSelector</string>
+
     <string name="arms">Arms</string>
     <string name="legs">Legs</string>
     <string name="abs">Abs</string>
     <string name="back">Back</string>
+
+    <string name="abs_dcrunch">Double Crunches</string>
+    <string name="abs_ocrunch">Oblique Crunches</string>
+    <string name="abs_sbridge">Side Bridge</string>
+
+    <string name="arms_pushups">Push Ups</string>
+    <string name="arms_kickbakc">Kickbacks</string>
+    <string name="arms_textensions">Tri Extensions</string>
+
+    <string name="back_deadlift">Dead Lifts</string>
+    <string name="back_lyingrow">Lying Row</string>
+    <string name="back_singlerow">Single Row</string>
+
+    <string name="leg_swing">Leg Swing</string>
+    <string name="leg_heel">Heel Touch Step Up</string>
+    <string name="leg_supine">Supine Hip</string>
+
+
 </resources>

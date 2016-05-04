@@ -32,7 +32,9 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity android:name=".WorkItSelector" />
         <activity android:name=".UserInfo" />
-        <activity android:name=".ListViewWorkOut"></activity>
+        <activity android:name=".ListViewWorkOut" />
+        <activity android:name=".WorkOutDetails" />
+        <activity android:name=".WorkAdapter"></activity>
     </application>
 
 </manifest>
