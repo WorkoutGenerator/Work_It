@@ -14,11 +14,11 @@ public class WorkOutDetails extends AppCompatActivity {
         setContentView(R.layout.activity_work_out_details);
 
         ImageView image = (ImageView) findViewById(R.id.detail_image);
-        TextView work_info = (TextView) findViewById(R.id.work_info);
+        TextView title = (TextView) findViewById(R.id.detail_title);
 
 
-        image.setImageResource(getIntent().getExtras().getInt("image"));
-        work_info.setText(getIntent().getExtras().getString("info"));
+        image.setImageResource(getIntent().getExtras().getInt("images"));
+        title.setText(getIntent().getExtras().getString("name"));
 
     }
 }
