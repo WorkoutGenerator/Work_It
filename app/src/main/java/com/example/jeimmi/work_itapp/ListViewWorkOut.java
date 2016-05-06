@@ -35,13 +35,13 @@ public class ListViewWorkOut extends ListActivity {
             absWork();
 
         }else if(workType.contentEquals("ARMS")){
-            //armsWork();
+            armsWork();
 
         }else if(workType.contentEquals("BACK")){
-            //backWork();
+            backWork();
 
         }else if(workType.contentEquals("LEGS")){
-            //legsWork();
+            legsWork();
 
         }
     }
@@ -68,7 +68,7 @@ public class ListViewWorkOut extends ListActivity {
     }
     public void armsWork(){
                     final String[] armsWorking={"Kickbacks","Push Ups","Tri Extensions"};
-                    final int [] images = {R.drawable.doublecrunches,R.drawable.obliquecrunches, R.drawable.sidebridge};
+                    final int [] images = {R.drawable.kickback,R.drawable.pushup, R.drawable.tricepextension};
                     ArrayAdapter<String> workAdapter = new ArrayAdapter<String>(this, R.layout.activity_work_adapter, armsWorking);
                     ListView workList = (ListView) findViewById(android.R.id.list);
                     workList.setAdapter(workAdapter);
@@ -78,7 +78,7 @@ public class ListViewWorkOut extends ListActivity {
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             outgoingIntent = new Intent(ListViewWorkOut.this, WorkOutDetails.class);
                             outgoingIntent.putExtra(WORKOUT_TYPE, "ARMS");
-                            outgoingIntent.putExtra(WORKOUT_TYPE, armsWorking[position]);
+                            outgoingIntent.putExtra("name", armsWorking[position]);
                             outgoingIntent.putExtra("images", images[position]);
                             startActivity(outgoingIntent);
 
@@ -88,7 +88,7 @@ public class ListViewWorkOut extends ListActivity {
                 }
             public void legsWork(){
                 final String[] legsWorking={"Leg Swing","Heel Touch Step Up","Supine Hip"};
-                final int [] images = {R.drawable.doublecrunches,R.drawable.obliquecrunches, R.drawable.sidebridge};
+                final int [] images = {R.drawable.legswing,R.drawable.heeltouch, R.drawable.supinehip};
                 ArrayAdapter<String> workAdapter = new ArrayAdapter<String>(this, R.layout.activity_work_adapter, legsWorking);
                 ListView workList = (ListView) findViewById(android.R.id.list);
                 workList.setAdapter(workAdapter);
@@ -98,7 +98,7 @@ public class ListViewWorkOut extends ListActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         outgoingIntent = new Intent(ListViewWorkOut.this, WorkOutDetails.class);
                         outgoingIntent.putExtra(WORKOUT_TYPE, "LEGS");
-                        outgoingIntent.putExtra(WORKOUT_TYPE, legsWorking[position]);
+                        outgoingIntent.putExtra("name", legsWorking[position]);
                         outgoingIntent.putExtra("images", images[position]);
                         startActivity(outgoingIntent);
 
@@ -107,7 +107,7 @@ public class ListViewWorkOut extends ListActivity {
             }
             public void backWork(){
                 final String[] backWorking={"Dead Lift","Lying Row","Single Row"};
-                final int [] images = {R.drawable.doublecrunches,R.drawable.obliquecrunches, R.drawable.sidebridge};
+                final int [] images = {R.drawable.deadlift,R.drawable.lyingrow, R.drawable.singlerow};
                 ArrayAdapter<String> workAdapter = new ArrayAdapter<String>(this, R.layout.activity_work_adapter, backWorking);
                 ListView workList = (ListView) findViewById(android.R.id.list);
                 workList.setAdapter(workAdapter);
@@ -117,7 +117,7 @@ public class ListViewWorkOut extends ListActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         outgoingIntent = new Intent(ListViewWorkOut.this, WorkOutDetails.class);
                         outgoingIntent.putExtra(WORKOUT_TYPE, "BACK");
-                outgoingIntent.putExtra(WORKOUT_TYPE, backWorking[position]);
+                outgoingIntent.putExtra("name", backWorking[position]);
                 outgoingIntent.putExtra("images", images[position]);
                 startActivity(outgoingIntent);
 
